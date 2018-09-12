@@ -19,6 +19,18 @@ main section.categories-show {
       padding-bottom: 80px;
       margin-top:    20px;
       // margin:        10px;
+      padding-top:   33px;
+
+      .sold-out-notif {
+        position: absolute;
+        margin: 0;
+        top: 0;
+        left: 0;
+        padding: 5px;
+        background-color: #fc8679;
+        border-radius: 5px 0px;
+        opacity: 0.8;
+      }
 
       header img {
         max-width: 100%;
