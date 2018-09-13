@@ -27,31 +27,31 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
-            <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Dashboard', [:admin, :root] %></li>
-            <li><%= link_to 'Products',  [:admin, :products] %></li>
-            <li><%= link_to 'Categories', [:admin, :categories] %></li>
-          </ul>
+        <li class="login">
+          <% if current_user %>
+            <span>Signed in as <%= current_user.first_name %> | <%= link_to 'Logout', [:logout] %></span>
+          <% else %>
+            <span><%= link_to 'Register', [:register] %></span>
+            <span><%= link_to 'Login',  [:login] %></span>
+          <% end %>
         </li>
+        <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+             <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
+             <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu">
+             <li><%= link_to 'Dashboard', [:admin, :root] %></li>
+             <li><%= link_to 'Products',  [:admin, :products] %></li>
+             <li><%= link_to 'Categories', [:admin, :categories] %></li>
+           </ul>
+         </li>
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
-        <div class="navbar-right">
-          <% if current_user %>
-            <li>Signed in as <%= current_user.first_name %> | <%= link_to 'Logout', [:logout] %></li>
-          <% else %>
-            <li><%= link_to 'Register', [:register] %></li>
-            <li><%= link_to 'Login',  [:login] %></li>
-          <% end %>
-        </div>
       </ul>
     </div>
   </div>
