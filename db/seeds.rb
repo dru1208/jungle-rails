@@ -21,6 +21,32 @@ end
 
 # Let's do this ...
 
+## Test User
+
+puts "Creating Test Users"
+
+user1 = User.create!({
+  first_name: 'dru',
+  last_name: 'hsieh',
+  email: 'dru@gmail.com',
+  password: 'dru'
+})
+
+user2 = User.create!({
+  first_name: 'andrew',
+  last_name: 'hsieh',
+  email: 'andrew@gmail.com',
+  password: 'andrew'
+})
+
+user3 = User.create!({
+  first_name: 'andy',
+  last_name: 'hsieh',
+  email: 'andy@gmail.com',
+  password: 'andy'
+})
+
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -131,6 +157,39 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
+
+## Reviews
+
+puts "Adding some reviews for your products"
+product1 = Product.find_by(id: 1)
+product2 = Product.find_by(id: 2)
+product3 = Product.find_by(id: 3)
+
+product1.reviews.create!({
+  user_id: 1,
+  description: "awesome!",
+  rating: 5
+})
+
+product1.reviews.create!({
+  user_id: 2,
+  description: "cool!",
+  rating: 5
+})
+
+product2.reviews.create!({
+  user_id: 1,
+  description: "trash!",
+  rating: 1
+})
+
+product3.reviews.create!({
+  user_id: 2,
+  description: "it's oaky i guess",
+  rating: 3
+})
+
+
 
 
 puts "DONE!"
