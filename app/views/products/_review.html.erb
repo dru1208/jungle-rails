@@ -2,7 +2,7 @@
   <td><%= review.user.first_name %></td>
   <td><%= review.description %></td>
   <td><%= review.rating %>/5</td>
-  <% if current_user.id === review.user.id %>
+  <% if current_user && current_user.id === review.user.id %>
     <td> <%= link_to 'Delete', [review.product, review],
                method: :delete,
                data: { confirm: 'Are you sure?' } %></td>
