@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for ordering from jUngLe.com, friend</h1>
+    <h3>Items Purchased:</h3>
+    <ul>
+      <% @order.line_items.each do |line_item| %>
+        <%= render 'item', line_item: line_item %>
+      <% end %>
+    </ul>
+    <p>
+      Your order total was <%= @order.total_cents / 100 %> dollars
+    </p>
+    <p>Congratulations on ordering, and have a great day!</p>
+  </body>
+</html>
