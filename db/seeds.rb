@@ -159,8 +159,10 @@ cat3.products.create!({
 })
 
 ## Reviews
-
 puts "Adding some reviews for your products"
+
+Review.destroy_all
+
 product1 = Product.find_by(id: 1)
 product2 = Product.find_by(id: 2)
 product3 = Product.find_by(id: 3)

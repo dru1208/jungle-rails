@@ -24,6 +24,28 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+      <div>
+        <h5>Reviews</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Description</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @product.reviews.each do |review| %>
+              <%= render 'review', review: review %>
+            <% end %>
+          </tbody>
+        </table>
+        <%= form_for [@product, @product.reviews.build] do |f| %>
+          <%= f.text_area :description, size: "40x12", placeholder: "Your Review Here"%>
+          <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
+          <%= f.submit "Create" %>
+        <% end %>
+      </div>
     </div>
 
   </article>
