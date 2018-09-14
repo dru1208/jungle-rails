@@ -41,8 +41,14 @@
           </tbody>
         </table>
         <%= form_for [@product, @product.reviews.build] do |f| %>
-          <%= f.text_area :description, size: "40x12", placeholder: "Your Review Here"%>
-          <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
+          <p>
+            <%= f.label :description %><br>
+            <%= f.text_area :description, size: "40x6", placeholder: "Your Review Here"%>
+          </p>
+          <p>
+            <%= f.label :rating %><br>
+            <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
+          </p>
           <%= f.submit "Create" %>
         <% end %>
       </div>
