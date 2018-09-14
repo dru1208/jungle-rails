@@ -24,6 +24,22 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+
+        <% if current_user %>
+          <%= form_for [@product, Review.new] do |f| %>
+            <p>
+              <%= f.label :description %><br>
+              <%= f.text_area :description, size: "40x6", placeholder: "Your Review Here"%>
+            </p>
+            <p>
+              <%= f.label :rating %><br>
+              <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
+            </p>
+            <%= f.submit "Create" %>
+          <% end %>
+        <% end %>
+
+
       <div>
         <h5>Reviews</h5>
         <table>
@@ -35,22 +51,13 @@
             </tr>
           </thead>
           <tbody>
-            <% @product.reviews.each do |review| %>
+            <% @product.reviews.reverse.each do |review| %>
               <%= render 'review', review: review %>
             <% end %>
           </tbody>
         </table>
-        <%= form_for [@product, @product.reviews.build] do |f| %>
-          <p>
-            <%= f.label :description %><br>
-            <%= f.text_area :description, size: "40x6", placeholder: "Your Review Here"%>
-          </p>
-          <p>
-            <%= f.label :rating %><br>
-            <%= f.select :rating, ['1', '2', '3', '4', '5'] %>
-          </p>
-          <%= f.submit "Create" %>
-        <% end %>
+
+
       </div>
     </div>
 
