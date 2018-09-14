@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
 
   def show
+    if cart == {}
+      redirect_to products_path, notice: "You need some items in your cart bruh"
+    end
   end
 
   def add_item
