@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    lower_case_email = @user.email.strip.downcase
+    @user.email = lower_case_email
     if @user.save
       session[:user_id] = @user.id
       redirect_to products_path
